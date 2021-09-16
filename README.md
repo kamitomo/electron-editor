@@ -1,24 +1,19 @@
 # electron-editor
 
-## Project setup
+vue.js & electron でファイルを開くプログラムを書く。
+
+`IPC`でメインプロセスとレンダラープロセスのプロセス間通信をする。
+
+- レンダラープロセス：`ipcRenderer.invoke`でイベントを通知
+- メインプロセス：`ipcMain.handle`でイベントを受け取る
+
+レンダラープロセス側はファイルを開くボタンクリック時にイベントを飛ばす。
+
+メインプロセス側でファイルオープンダイアログを開き、ファイルの中身を読み取ってレンダラープロセスへ返す。
+
+## セットアップ
+
 ```
 npm install
+npm run electron:serve
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
